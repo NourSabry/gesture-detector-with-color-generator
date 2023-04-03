@@ -2,8 +2,8 @@
 
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
+import 'package:color_generator/colors.dart';
+ import 'package:flutter/material.dart';
 
 class MyWidget extends StatefulWidget {
   const MyWidget({super.key});
@@ -13,20 +13,7 @@ class MyWidget extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<MyWidget> {
-  List colors = [
-    Colors.red,
-    Colors.green,
-    const Color.fromARGB(255, 107, 103, 70),
-    Colors.black,
-    Colors.blue,
-    Colors.brown,
-    Colors.deepPurpleAccent,
-    Colors.grey,
-    Colors.deepOrange,
-    Colors.pink,
-  ];
   Random random = Random();
-
   int index = 0;
 
   void changeIndex() {
@@ -35,13 +22,15 @@ class _MyWidgetState extends State<MyWidget> {
     );
   }
 
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    
+
     return Scaffold(
-      backgroundColor: colors[index],
+      backgroundColor: BackgroundColors.bgColors[index],
       body: Stack(
-        // mainAxisAlignment: MainAxisAlignment.center,
         children: [
           GestureDetector(
             onTap: () {
@@ -73,16 +62,14 @@ class _MyWidgetState extends State<MyWidget> {
   _onTapDown(TapDownDetails details) {
     var x = details.globalPosition.dx;
     var y = details.globalPosition.dy;
-    // or user the local position method to get the offset
-    print(details.localPosition);
+     print(details.localPosition);
     print("tap down $x, $y");
   }
 
   _onTapUp(TapUpDetails details) {
     var x = details.globalPosition.dx;
     var y = details.globalPosition.dy;
-    // or user the local position method to get the offset
-    print(details.localPosition);
+     print(details.localPosition);
     print("tap up $x, $y");
   }
 }
